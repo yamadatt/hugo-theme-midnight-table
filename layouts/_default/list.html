@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="wrap">
+  {{ partial "header.html" . }}
+
+  <div class="section-label">{{ .Title }}</div>
+
+  {{ $paginator := .Paginate .Pages }}
+  {{ range $paginator.Pages }}
+    {{ partial "post-row.html" . }}
+  {{ end }}
+
+  {{ partial "pager.html" . }}
+
+  {{ partial "footer.html" . }}
+</div>
+{{ end }}

@@ -1,0 +1,17 @@
+name = "Midnight Table"
+license = "MIT"
+licenselink = "https://github.com/yamadatt/hugo-theme-midnight-table/blob/main/LICENSE"
+description = "深夜の対話番組のような読み物アーカイブ向けのシンプルな日本語Hugoテーマ。記事一覧、年/月別アーカイブ、カテゴリー、タグ、クライアントサイド検索を備える。"
+homepage = "https://github.com/yamadatt/hugo-theme-midnight-table"
+demosite = ""
+tags = ["blog", "japanese", "archive", "minimal", "dark", "search"]
+features = ["archives", "categories", "tags", "client-side-search", "pagination", "rss", "responsive"]
+min_version = "0.111.0"
+
+[author]
+  name = "yamadatt"
+  homepage = "https://github.com/yamadatt"
+
+[original]
+  author = "yamadatt"
+  repo = "https://github.com/yamadatt/hugo-theme-midnight-table"

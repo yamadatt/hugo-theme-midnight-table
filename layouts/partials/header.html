@@ -1,0 +1,19 @@
+<div class="topbar">
+  <a class="brand" href="{{ "/" | relURL }}">
+    <div class="brand-name">{{ .Site.Title }}</div>
+  </a>
+  <button class="menu-toggle" type="button" data-menu-toggle aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="nav" id="site-nav">
+    <a href="{{ "/archives/" | relURL }}"{{ if or (eq .Layout "archives") (eq .Section "posts") }} class="active"{{ end }}>Archive</a>
+    {{ if and (ne .Site.Params.showCategories false) (isset .Site.Taxonomies "categories") }}
+    <a href="{{ "/categories/" | relURL }}"{{ if eq .Data.Plural "categories" }} class="active"{{ end }}>Category</a>
+    {{ end }}
+    <a href="{{ "/tags/" | relURL }}"{{ if eq .Data.Plural "tags" }} class="active"{{ end }}>Tag</a>
+    <a href="{{ "/about/" | relURL }}"{{ if eq .Layout "about" }} class="active"{{ end }}>About</a>
+    <button class="search" type="button" data-search-open aria-label="検索"><span class="icon">🔍</span></button>
+  </nav>
+</div>

@@ -1,0 +1,24 @@
+{{ $p := .Paginator }}
+{{ if gt $p.TotalPages 1 }}
+{{ $current := $p.PageNumber }}
+{{ $total := $p.TotalPages }}
+<nav class="pager" aria-label="Pagination">
+  {{ if $p.HasPrev }}<a class="prev" href="{{ $p.Prev.URL }}">← 前へ</a>{{ else }}<span class="prev disabled" aria-disabled="true">← 前へ</span>{{ end }}
+  {{ $lastShown := 0 }}
+  {{ range $p.Pagers }}
+    {{ $pageNumber := .PageNumber }}
+    {{ $nearCurrent := and (ge $pageNumber (sub $current 1)) (le $pageNumber (add $current 1)) }}
+    {{ $showPage := or (le $total 7) (eq $pageNumber 1) (eq $pageNumber $total) $nearCurrent }}
+    {{ if $showPage }}
+      {{ if gt (sub $pageNumber $lastShown) 1 }}<span class="dots" aria-hidden="true">…</span>{{ end }}
+      {{ if eq . $p }}
+        <span class="active" aria-current="page">{{ $pageNumber }}</span>
+      {{ else }}
+        <a href="{{ .URL }}" aria-label="ページ {{ $pageNumber }}">{{ $pageNumber }}</a>
+      {{ end }}
+      {{ $lastShown = $pageNumber }}
+    {{ end }}
+  {{ end }}
+  {{ if $p.HasNext }}<a class="next" href="{{ $p.Next.URL }}">次へ →</a>{{ else }}<span class="next disabled" aria-disabled="true">次へ →</span>{{ end }}
+</nav>
+{{ end }}

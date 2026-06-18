@@ -1,0 +1,13 @@
+<article class="post-row">
+  <div class="post-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "1/02" }}</time>
+    {{ with .GetTerms "tags" }}
+      <span class="meta-separator">・</span>
+      <span class="post-tags">
+        {{ range . }}<a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+      </span>
+    {{ end }}
+  </div>
+  <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  {{ with .Params.summary }}<p class="post-excerpt">{{ . }}</p>{{ end }}
+</article>

@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="wrap">
+  {{ partial "header.html" . }}
+
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  <div class="section-label">{{ .Title }}</div>
+
+  {{ range $posts.GroupByDate "2006" }}
+    <div class="year-head"><span class="y">{{ .Key }}</span><span class="c">{{ len .Pages }}</span></div>
+    {{ range .Pages.GroupByDate "1" }}
+      <div class="month-row">
+        <div>
+          <div class="m">{{ .Key }}月</div>
+          <div class="mc">{{ len .Pages }}</div>
+        </div>
+        <div class="month-list">
+          {{ range .Pages }}
+            <div class="t"><a href="{{ .RelPermalink }}">{{ .Title }}</a><span class="d">（{{ .Date.Format "1/02" }}）</span></div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
+
+  {{ partial "footer.html" . }}
+</div>
+{{ end }}

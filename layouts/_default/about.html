@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="wrap wrap--article">
+  {{ partial "header.html" . }}
+
+  <h1 class="article-title">{{ .Title }}</h1>
+
+  <div class="prose about-prose">
+    {{ .Content }}
+  </div>
+
+  {{ partial "footer.html" . }}
+</div>
+{{ end }}

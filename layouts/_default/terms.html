@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="wrap">
+  {{ partial "header.html" . }}
+
+  <div class="section-label">{{ if eq .Data.Plural "categories" }}カテゴリ一覧{{ else }}タグ一覧{{ end }}</div>
+
+  <div class="tagcloud">
+    {{ range .Data.Terms.ByCount }}
+      {{ $size := add 15 (mul .Count 1) }}
+      {{ $size = cond (gt $size 30) 30 $size }}
+      <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $size }}px;{{ if ge .Count 16 }}color:#2b2723;{{ end }}{{ if ge .Count 21 }}color:#b5462f;{{ end }}">{{ .Page.Title }}<span class="n">{{ .Count }}</span></a>
+    {{ end }}
+  </div>
+
+  {{ partial "footer.html" . }}
+</div>
+{{ end }}
