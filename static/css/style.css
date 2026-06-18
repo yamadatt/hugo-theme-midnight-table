@@ -3,7 +3,7 @@
    見出し・本文は明朝、ラベル・メタはゴシック。 */
 
 :root{
-  --bg:#fcfbf9;
+  --bg:#fefdfb;
   --ink:#2b2723;
   --ink2:#3a352f;
   --accent:#b5462f;
@@ -38,7 +38,7 @@ a{ color:var(--accent); }
   position:sticky; top:0; z-index:10;
   display:flex; justify-content:space-between; align-items:center;
   min-height:58px; padding:14px 0; border-bottom:1px solid var(--ink); margin-bottom:48px;
-  background:rgba(252,251,249,.96); backdrop-filter:blur(10px);
+  background:rgba(254,253,251,.96); backdrop-filter:blur(10px);
 }
 .topbar .brand{ text-decoration:none; display:block; }
 .brand-eyebrow{ font-size:10px; letter-spacing:.2em; color:var(--accent); font-weight:700; margin-bottom:8px; }
@@ -189,7 +189,7 @@ a{ color:var(--accent); }
 .prose img{ display:block; max-width:100%; height:auto; margin:28px auto; }
 .prose pre{
   font-family:'SFMono-Regular',Menlo,Consolas,monospace; font-size:13px; line-height:1.85;
-  background:var(--ink); color:#ded8cf; padding:22px 24px; border-radius:8px; margin:28px 0;
+  background:var(--ink) !important; color:#ded8cf; padding:22px 24px; border-radius:8px; margin:28px 0;
   overflow-x:auto; white-space:pre; letter-spacing:0;
 }
 .prose :not(pre) > code{
@@ -282,7 +282,7 @@ a{ color:var(--accent); }
   .nav{
     position:absolute; top:100%; left:0; right:0; display:none; flex-direction:column; align-items:stretch;
     gap:0; padding:6px 0 12px; border-bottom:1px solid var(--ink);
-    background:rgba(252,251,249,.98); box-shadow:0 18px 36px rgba(43,39,35,.12);
+    background:rgba(254,253,251,.98); box-shadow:0 18px 36px rgba(43,39,35,.12);
   }
   .topbar.nav-open .nav{ display:flex; }
   .nav a,.nav .search{

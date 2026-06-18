@@ -8,11 +8,11 @@
     <span></span>
   </button>
   <nav class="nav" id="site-nav">
-    <a href="{{ "/archives/" | relURL }}"{{ if or (eq .Layout "archives") (eq .Section "posts") }} class="active"{{ end }}>Archive</a>
+    <a href="{{ "/archives/" | relURL }}"{{ if or (eq .Layout "archives") (eq .Section "posts") }} class="active"{{ end }}>Archives</a>
     {{ if and (ne .Site.Params.showCategories false) (isset .Site.Taxonomies "categories") }}
-    <a href="{{ "/categories/" | relURL }}"{{ if eq .Data.Plural "categories" }} class="active"{{ end }}>Category</a>
+    <a href="{{ "/categories/" | relURL }}"{{ if eq .Data.Plural "categories" }} class="active"{{ end }}>Categories</a>
     {{ end }}
-    <a href="{{ "/tags/" | relURL }}"{{ if eq .Data.Plural "tags" }} class="active"{{ end }}>Tag</a>
+    <a href="{{ "/tags/" | relURL }}"{{ if eq .Data.Plural "tags" }} class="active"{{ end }}>Tags</a>
     <a href="{{ "/about/" | relURL }}"{{ if eq .Layout "about" }} class="active"{{ end }}>About</a>
     <button class="search" type="button" data-search-open aria-label="検索"><span class="icon">🔍</span></button>
   </nav>

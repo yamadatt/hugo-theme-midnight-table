@@ -5,8 +5,6 @@
   <h1 class="article-title">{{ .Title }}</h1>
   <div class="article-meta">
     {{ .Date.Format "2006年1月2日" }}
-    {{ with .Params.cast }} ・ 出演：{{ . }}{{ end }}
-    {{ with .Params.duration }} ・ {{ . }}分{{ end }}
   </div>
   {{ $categories := slice }}
   {{ if and (ne .Site.Params.showCategories false) (isset .Site.Taxonomies "categories") }}
@@ -25,19 +23,12 @@
     {{ end }}
     {{ with $tags }}
     <div class="article-taxonomy-row">
-      <span class="article-taxonomy-label">タグ</span>
+      <span class="article-taxonomy-label">Tags</span>
       <span class="article-taxonomy-list">
         {{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
       </span>
     </div>
     {{ end }}
-  </div>
-  {{ end }}
-
-  {{ with .Params.summary_points }}
-  <div class="summary">
-    <div class="label">この回の要点</div>
-    <ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
   </div>
   {{ end }}
 
@@ -47,17 +38,17 @@
 
   {{ if or .PrevInSection .NextInSection }}
   <nav class="article-nav" aria-label="記事ナビゲーション">
-    {{ with .NextInSection }}
+    {{ with .PrevInSection }}
     <a class="article-nav-link article-nav-prev" href="{{ .RelPermalink }}">
-      <span class="article-nav-label">前の記事</span>
+      <span class="article-nav-label">古い記事</span>
       <span class="article-nav-title">{{ .Title }}</span>
     </a>
     {{ else }}
     <span></span>
     {{ end }}
-    {{ with .PrevInSection }}
+    {{ with .NextInSection }}
     <a class="article-nav-link article-nav-next" href="{{ .RelPermalink }}">
-      <span class="article-nav-label">次の記事</span>
+      <span class="article-nav-label">新しい記事</span>
       <span class="article-nav-title">{{ .Title }}</span>
     </a>
     {{ end }}

@@ -93,13 +93,8 @@ hugo new posts/2026/your-post/index.md
 - `summary` … トップや検索結果で使う概要
 - `categories` … カテゴリー。個別記事とカテゴリー一覧に反映
 - `tags` … タグ。個別記事とタグ一覧に反映
-- `cast` … 出演者など。設定時のみ個別記事のメタ情報に表示
-- `duration` … 分数。設定時のみ個別記事のメタ情報に表示
 - `featured: true` … トップの記事一覧で「最新」バッジを表示
-- `summary_points` … 記事冒頭の「この回の要点」として表示
 - `images` / `cover` … 記事に関連する画像メタデータ
-
-`episode` や `audio` をフロントマターに残しても、現在のテンプレートでは表示しません。
 
 ## Markdown
 
