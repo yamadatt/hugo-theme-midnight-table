@@ -15,7 +15,7 @@
   <div class="article-taxonomy">
     {{ with $categories }}
     <div class="article-taxonomy-row">
-      <span class="article-taxonomy-label">カテゴリー</span>
+      <span class="article-taxonomy-label">Categories</span>
       <span class="article-taxonomy-list">
         {{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
       </span>
