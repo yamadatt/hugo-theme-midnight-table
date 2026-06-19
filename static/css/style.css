@@ -304,13 +304,9 @@ a:hover{ color:var(--accent-hover); }
   .nav a.active{ color:var(--accent); }
   .nav .search .icon{ margin-left:0; }
   .article-title{ font-size:26px; }
-  /* archives: stack the month label above the titles, let titles wrap */
+  /* archives: stack the month label above the titles; titles stay one line */
   .month-row{ display:block; padding:18px 0; }
   .month-row .m{ display:inline; }
   .month-row .mc{ display:inline; margin:0 0 0 8px; }
   .month-row > div:first-child{ margin-bottom:12px; }
-  .month-list{ gap:16px; }
-  .month-list .t{ display:block; white-space:normal; }
-  .month-list .t a{ display:inline; overflow:visible; white-space:normal; text-overflow:clip; }
-  .month-list .d{ display:block; margin-left:0; margin-top:2px; }
 }
