@@ -48,6 +48,7 @@ a:hover{ color:var(--accent-hover); }
   display:flex; justify-content:space-between; align-items:center;
   min-height:58px; padding:26px 0; border-bottom:1px solid var(--hdr); margin-bottom:48px;
   background:rgba(250,251,248,.94); backdrop-filter:blur(10px);
+  transition:transform .25s ease;
 }
 .topbar .brand{ text-decoration:none; display:block; }
 .brand-eyebrow{ font-size:10px; letter-spacing:.2em; color:var(--accent); font-weight:700; margin-bottom:8px; }
@@ -289,6 +290,8 @@ a:hover{ color:var(--accent-hover); }
 @media (max-width:640px){
   .wrap{ padding:0 22px 56px; }
   .topbar{ min-height:56px; margin-bottom:38px; padding:10px 0; }
+  /* auto-hide on scroll down, reveal on scroll up (see js/header-autohide.js) */
+  .topbar.is-hidden{ transform:translateY(-100%); }
   .brand-name{ font-size:22px; }
   .menu-toggle{ display:block; margin-left:auto; }
   .nav{
