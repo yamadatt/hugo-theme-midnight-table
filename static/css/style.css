@@ -1,44 +1,53 @@
-/* ===== 真夜中のテーブル — Hugo theme =====
-   生成りの温白 + 墨色、差し色は朱を一色。
-   見出し・本文は明朝、ラベル・メタはゴシック。 */
+/* ===== 真夜中のテーブル — Hugo theme（読みやすさ改善案 B）=====
+   オフホワイト地 + 濃グレー本文、差し色は深緑を一色。
+   本文・見出し・リンクすべて BIZ UDPGothic に統一。 */
 
 :root{
-  --bg:#ffffff;
-  --ink:#1d1a16;
-  --ink2:#2a2520;
-  --accent:#b5462f;
-  --muted:#544d44;
-  --muted2:#3f3a33;
-  --muted3:#6b645c;
-  --faint:#c0b9af;
-  --rule:#e2ddd2;
-  --rule2:#ebe7de;
-  --serif:'Noto Serif JP', serif;
-  --sans:'Noto Sans JP', sans-serif;
+  --bg:#fafbf8;
+  --ink:#1e221d;          /* 見出し・タイトル */
+  --body:#3b3f38;         /* 本文テキスト */
+  --ink2:#2a2e28;
+  --accent:#355e43;       /* 深緑：リンク・日付 */
+  --accent-hover:#284a34;
+  --muted:#6a6f64;
+  --muted2:#4e5349;
+  --muted3:#8a9085;
+  --faint:#b7bcb0;
+  --rule:#ebede6;         /* 記事間の仕切り線 */
+  --rule2:#f0f2ec;
+  --hdr:#e6e8e1;          /* ヘッダー下線 */
+  --tag:#9aa096;          /* タグ文字（小さく薄く） */
+  --tag-border:#e3e6dd;
+  --serif:'BIZ UDPGothic', sans-serif;
+  --sans:'BIZ UDPGothic', sans-serif;
 }
 
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 body{
   background:var(--bg);
-  color:var(--ink);
+  color:var(--body);
   font-family:var(--sans);
+  font-size:16px;
+  line-height:2;
+  letter-spacing:.015em;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
-::selection{ background:#d9c3b8; }
-a{ color:var(--accent); }
+::selection{ background:#cfe0d4; }
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ color:var(--accent-hover); }
 
 /* ---- layout shells ---- */
-.wrap{ max-width:760px; margin:0 auto; padding:0 28px 72px; }
+.wrap{ max-width:720px; margin:0 auto; padding:0 56px 72px; }
 .wrap--article{ max-width:720px; }
 
 /* ---- top bar ---- */
 .topbar{
   position:sticky; top:0; z-index:10;
   display:flex; justify-content:space-between; align-items:center;
-  min-height:58px; padding:14px 0; border-bottom:1px solid var(--ink); margin-bottom:48px;
-  background:rgba(255,255,255,.96); backdrop-filter:blur(10px);
+  min-height:58px; padding:26px 0; border-bottom:1px solid var(--hdr); margin-bottom:48px;
+  background:rgba(250,251,248,.94); backdrop-filter:blur(10px);
 }
 .topbar .brand{ text-decoration:none; display:block; }
 .brand-eyebrow{ font-size:10px; letter-spacing:.2em; color:var(--accent); font-weight:700; margin-bottom:8px; }
@@ -128,15 +137,16 @@ a{ color:var(--accent); }
 }
 
 /* ---- post list rows (top / section / taxonomy) ---- */
-.post-row{ padding:28px 0; border-top:1px solid var(--rule); }
-.post-meta{ display:flex; align-items:center; flex-wrap:wrap; gap:0 4px; font-size:11px; color:var(--muted3); letter-spacing:.08em; margin-bottom:8px; }
+.post-row{ padding:0 0 38px; margin-bottom:38px; border-bottom:1px solid var(--rule); }
+.post-meta{ display:flex; align-items:center; flex-wrap:wrap; gap:0 4px; font-size:13px; color:var(--muted3); letter-spacing:.04em; margin-bottom:8px; }
 .post-meta .meta-separator{ color:var(--faint); margin:0 2px; }
-.post-tags{ display:flex; flex-wrap:wrap; gap:4px 8px; }
-.post-tags .tag{ color:var(--accent); font-size:10px; font-weight:700; letter-spacing:.14em; text-decoration:none; }
-.post-title{ font-family:var(--serif); font-size:24px; font-weight:600; line-height:1.5; margin:0; }
+.post-tags{ display:flex; flex-wrap:wrap; gap:6px 8px; }
+.post-tags .tag{ color:var(--tag); font-size:12px; font-weight:400; letter-spacing:.04em; text-decoration:none; border:1px solid var(--tag-border); border-radius:4px; padding:1px 8px; }
+.post-tags .tag:hover{ color:var(--accent); border-color:var(--accent); }
+.post-title{ font-family:var(--serif); font-size:24px; font-weight:700; line-height:1.55; margin:0; }
 .post-title a{ color:var(--ink); text-decoration:none; }
 .post-title a:hover{ color:var(--accent); }
-.post-excerpt{ font-size:13px; line-height:1.9; color:var(--muted); margin:10px 0 0; }
+.post-excerpt{ font-size:15px; line-height:1.95; color:var(--muted); margin:10px 0 0; }
 
 /* ---- pagination ---- */
 .pager{
@@ -156,7 +166,7 @@ a{ color:var(--accent); }
 
 /* ---- article (single) ---- */
 .article-eyebrow{ text-align:center; font-size:11px; letter-spacing:.2em; color:var(--accent); font-weight:700; margin-bottom:20px; }
-.article-title{ font-family:var(--serif); font-size:38px; font-weight:600; line-height:1.5; text-align:center; letter-spacing:.02em; margin:0; }
+.article-title{ font-family:var(--serif); font-size:30px; font-weight:700; line-height:1.6; color:var(--ink); text-align:center; letter-spacing:.015em; margin:0; }
 .article-meta{ text-align:center; font-size:12px; color:var(--muted2); margin-top:22px; letter-spacing:.08em; }
 .article-taxonomy{ display:flex; flex-direction:column; align-items:center; gap:8px; margin:18px 0 36px; font-family:var(--sans); font-size:12px; line-height:1.8; }
 .article-taxonomy-row{ display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center; gap:6px 10px; }
@@ -173,14 +183,14 @@ a{ color:var(--accent); }
 .summary li::before{ content:"・ "; color:var(--accent); }
 
 /* ---- markdown body (.prose) — mirrors article 案A ---- */
-.prose{ font-family:var(--serif); font-size:16.5px; line-height:2.15; letter-spacing:.03em; color:var(--ink); }
+.prose{ font-family:var(--serif); font-size:17px; line-height:2.15; letter-spacing:.015em; color:var(--body); }
 .prose > *:first-child{ margin-top:0; }
 .prose p{ margin:0 0 28px; }
 .prose h2{
-  font-family:var(--serif); font-size:25px; font-weight:600; line-height:1.5; letter-spacing:.02em;
-  margin:48px 0 22px; padding-bottom:12px; border-bottom:1px solid var(--ink);
+  font-family:var(--serif); font-size:20px; font-weight:700; line-height:1.6; letter-spacing:.015em; color:var(--ink);
+  margin:48px 0 22px; padding-bottom:12px; border-bottom:1px solid var(--hdr);
 }
-.prose h3{ font-family:var(--serif); font-size:19px; font-weight:600; line-height:1.6; margin:40px 0 14px; }
+.prose h3{ font-family:var(--serif); font-size:18px; font-weight:700; line-height:1.6; color:var(--ink); margin:40px 0 14px; }
 .prose h3::before{ content:"—"; color:var(--accent); margin-right:12px; }
 .prose blockquote{
   margin:32px 0; padding:8px 0 8px 24px; border-left:3px solid var(--accent);
@@ -222,7 +232,8 @@ a{ color:var(--accent); }
 .prose tr td:last-child{ font-variant-numeric:tabular-nums; white-space:normal; }
 .prose ul,.prose ol{ padding-left:1.4em; margin:0 0 28px; }
 .prose li{ margin-bottom:8px; }
-.prose a{ color:var(--accent); }
+.prose a{ color:var(--accent); text-decoration:none; }
+.prose a:hover{ color:var(--accent-hover); text-decoration:underline; text-underline-offset:3px; }
 .prose hr{ border:none; border-top:1px solid var(--rule); margin:40px 0; }
 
 .article-nav{
@@ -282,8 +293,8 @@ a{ color:var(--accent); }
   .menu-toggle{ display:block; margin-left:auto; }
   .nav{
     position:absolute; top:100%; left:0; right:0; display:none; flex-direction:column; align-items:stretch;
-    gap:0; padding:6px 0 12px; border-bottom:1px solid var(--ink);
-    background:rgba(255,255,255,.98); box-shadow:0 18px 36px rgba(43,39,35,.12);
+    gap:0; padding:6px 0 12px; border-bottom:1px solid var(--hdr);
+    background:rgba(250,251,248,.98); box-shadow:0 18px 36px rgba(30,34,29,.10);
   }
   .topbar.nav-open .nav{ display:flex; }
   .nav a,.nav .search{
@@ -292,6 +303,6 @@ a{ color:var(--accent); }
   }
   .nav a.active{ color:var(--accent); }
   .nav .search .icon{ margin-left:0; }
-  .article-title{ font-size:30px; }
+  .article-title{ font-size:26px; }
   .month-row{ grid-template-columns:64px 1fr; gap:16px; }
 }
