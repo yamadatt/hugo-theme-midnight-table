@@ -39,7 +39,7 @@ a{ color:var(--accent); text-decoration:none; }
 a:hover{ color:var(--accent-hover); }
 
 /* ---- layout shells ---- */
-.wrap{ max-width:720px; margin:0 auto; padding:0 56px 72px; }
+.wrap{ max-width:880px; margin:0 auto; padding:0 56px 72px; }
 .wrap--article{ max-width:720px; }
 
 /* ---- top bar ---- */
