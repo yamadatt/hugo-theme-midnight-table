@@ -32,8 +32,33 @@
   </div>
   {{ end }}
 
-  <div class="prose">
-    {{ .Content }}
+  {{ $hasTOC := and (gt (len .TableOfContents) 120) (ne .Params.toc false) }}
+  <div class="article-body-container{{ if $hasTOC }} has-toc{{ end }}">
+    <div class="article-main-content">
+      {{ if $hasTOC }}
+      <details class="toc-inline" open>
+        <summary class="toc-inline-title">目次</summary>
+        <div class="toc-inline-content">
+          {{ .TableOfContents }}
+        </div>
+      </details>
+      {{ end }}
+
+      <div class="prose">
+        {{ .Content }}
+      </div>
+    </div>
+
+    {{ if $hasTOC }}
+    <aside class="toc-sidebar" aria-label="目次">
+      <div class="toc-sidebar-container">
+        <div class="toc-sidebar-title">目次</div>
+        <div class="toc-sidebar-content">
+          {{ .TableOfContents }}
+        </div>
+      </div>
+    </aside>
+    {{ end }}
   </div>
 
   {{ if or .PrevInSection .NextInSection }}
