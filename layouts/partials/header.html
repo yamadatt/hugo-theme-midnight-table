@@ -8,12 +8,24 @@
     <span></span>
   </button>
   <nav class="nav" id="site-nav">
-    <a href="{{ "/archives/" | relURL }}"{{ if or (eq .Layout "archives") (eq .Section "posts") }} class="active"{{ end }}>Archives</a>
+    <a href="{{ "/archives/" | relURL }}"{{ if or (eq .Layout "archives") (eq .Section "posts") }} class="active"{{ end }} aria-label="Archives" title="Archives">
+      <svg class="nav-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+      <span class="nav-text">Archives</span>
+    </a>
     {{ if and (ne .Site.Params.showCategories false) (isset .Site.Taxonomies "categories") }}
-    <a href="{{ "/categories/" | relURL }}"{{ if eq .Data.Plural "categories" }} class="active"{{ end }}>Categories</a>
+    <a href="{{ "/categories/" | relURL }}"{{ if eq .Data.Plural "categories" }} class="active"{{ end }} aria-label="Categories" title="Categories">
+      <svg class="nav-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      <span class="nav-text">Categories</span>
+    </a>
     {{ end }}
-    <a href="{{ "/tags/" | relURL }}"{{ if eq .Data.Plural "tags" }} class="active"{{ end }}>Tags</a>
-    <a href="{{ "/about/" | relURL }}"{{ if eq .Layout "about" }} class="active"{{ end }}>About</a>
+    <a href="{{ "/tags/" | relURL }}"{{ if eq .Data.Plural "tags" }} class="active"{{ end }} aria-label="Tags" title="Tags">
+      <svg class="nav-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+      <span class="nav-text">Tags</span>
+    </a>
+    <a href="{{ "/about/" | relURL }}"{{ if eq .Layout "about" }} class="active"{{ end }} aria-label="About" title="About">
+      <svg class="nav-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      <span class="nav-text">About</span>
+    </a>
     <button class="search" type="button" data-search-open aria-label="検索"><span class="icon">🔍</span></button>
     {{ if ne .Site.Params.themeToggle false }}
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="ダークモード切り替え">

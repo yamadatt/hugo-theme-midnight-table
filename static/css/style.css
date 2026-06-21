@@ -95,9 +95,28 @@ a:hover{ color:var(--accent-hover); }
 .topbar .brand{ text-decoration:none; display:block; }
 .brand-eyebrow{ font-size:10px; letter-spacing:.2em; color:var(--accent); font-weight:700; margin-bottom:8px; }
 .brand-name{ font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:.08em; color:var(--ink); }
-.nav{ display:flex; gap:24px; align-items:center; font-size:13px; }
-.nav a{ color:var(--muted); text-decoration:none; }
-.nav a.active{ color:var(--ink); font-weight:700; }
+.nav{ display:flex; gap:16px; align-items:center; font-size:13px; }
+.nav a{
+  color:var(--muted); text-decoration:none;
+  display:flex; align-items:center; justify-content:center;
+  width:26px; height:26px; border-radius:50%;
+  transition:all 0.2s ease;
+}
+.nav a:hover, .nav a.active{
+  background:var(--rule2);
+}
+.nav a .nav-icon{
+  stroke:var(--muted);
+  flex-shrink:0;
+  transition:stroke 0.2s ease;
+}
+.nav a:hover .nav-icon,
+.nav a.active .nav-icon{
+  stroke:var(--ink);
+}
+.nav .nav-text{
+  display:none;
+}
 .nav .search{
   appearance:none; border:0; background:transparent; padding:0; cursor:pointer;
   display:flex; align-items:center; gap:6px; color:var(--muted); font:inherit;
@@ -388,7 +407,24 @@ html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
     width:100%; min-height:44px; justify-content:flex-start; padding:0 2px;
     border-top:1px solid var(--rule); color:var(--ink2);
   }
-  .nav a.active{ color:var(--accent); }
+  .nav a{
+    border-radius:0;
+    justify-content:flex-start;
+    padding-left:8px;
+    gap:10px;
+    background:transparent !important;
+  }
+  .nav a.active{
+    color:var(--accent);
+  }
+  .nav a.active .nav-icon{
+    stroke:var(--accent);
+  }
+  .nav .nav-text{
+    display:inline;
+    font-size:13px;
+    font-weight:500;
+  }
   .nav .theme-toggle {
     border: 0;
     border-radius: 0;
