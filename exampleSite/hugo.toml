@@ -18,6 +18,7 @@ enableEmoji = false
   eyebrow = "深夜の対話放送 ・ 文字起こしアーカイブ"
   description = "深夜の対話番組「真夜中のテーブル」の文字起こしまとめ。本・音楽・暮らし・映画を語る読み物アーカイブ。"
   showCategories = false
+  themeToggle = true
 
 [taxonomies]
   category = "categories"

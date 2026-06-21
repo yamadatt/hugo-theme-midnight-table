@@ -4,6 +4,7 @@
 
 :root{
   --bg:#fafbf8;
+  --bg-trans:rgba(250,251,248,.94);
   --ink:#1e221d;          /* 見出し・タイトル */
   --body:#3b3f38;         /* 本文テキスト */
   --ink2:#2a2e28;
@@ -20,6 +21,46 @@
   --tag-border:#e3e6dd;
   --serif:'BIZ UDPGothic', sans-serif;
   --sans:'BIZ UDPGothic', sans-serif;
+}
+
+html[data-theme="dark"] {
+  --bg:#0f120f;
+  --bg-trans:rgba(15,18,15,.94);
+  --ink:#eef2eb;
+  --body:#c6ccc0;
+  --ink2:#dae0d4;
+  --accent:#5ca376;
+  --accent-hover:#7bb893;
+  --muted:#91968c;
+  --muted2:#a5aba0;
+  --muted3:#7a8075;
+  --faint:#20251d;
+  --rule:#252a22;
+  --rule2:#151814;
+  --hdr:#252a22;
+  --tag:#8b9086;
+  --tag-border:#2a3027;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg:#0f120f;
+    --bg-trans:rgba(15,18,15,.94);
+    --ink:#eef2eb;
+    --body:#c6ccc0;
+    --ink2:#dae0d4;
+    --accent:#5ca376;
+    --accent-hover:#7bb893;
+    --muted:#91968c;
+    --muted2:#a5aba0;
+    --muted3:#7a8075;
+    --faint:#20251d;
+    --rule:#252a22;
+    --rule2:#151814;
+    --hdr:#252a22;
+    --tag:#8b9086;
+    --tag-border:#2a3027;
+  }
 }
 
 *{ box-sizing:border-box; }
@@ -48,7 +89,7 @@ a:hover{ color:var(--accent-hover); }
   position:sticky; top:0; z-index:10;
   display:flex; justify-content:space-between; align-items:center;
   min-height:58px; padding:26px 0; border-bottom:1px solid var(--hdr); margin-bottom:48px;
-  background:rgba(250,251,248,.94); backdrop-filter:blur(10px);
+  background:var(--bg-trans); backdrop-filter:blur(10px);
   transition:transform .25s ease;
 }
 .topbar .brand{ text-decoration:none; display:block; }
@@ -63,9 +104,46 @@ a:hover{ color:var(--accent-hover); }
 }
 .nav .search:hover{ color:var(--ink); }
 .nav .search .icon{
-  width:26px; height:26px; border-radius:50%; border:1px solid #d6d0c5;
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--tag-border);
   display:flex; align-items:center; justify-content:center; font-size:13px;
 }
+.theme-toggle {
+  appearance: none; border: 0; background: transparent; padding: 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid var(--tag-border);
+  transition: all 0.2s ease;
+}
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.theme-toggle svg {
+  stroke: currentColor;
+  fill: none;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.theme-toggle:active svg {
+  transform: scale(0.85);
+}
+
+/* テーマ別アイコン切り替え */
+html[data-theme="light"] .theme-toggle .sun-icon { display: none; }
+html[data-theme="light"] .theme-toggle .moon-icon { display: block; }
+html[data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+
+/* OSダークモード時のデフォルト挙動用（localStorage未設定時） */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .theme-toggle .sun-icon { display: block; }
+  html:not([data-theme="light"]) .theme-toggle .moon-icon { display: none; }
+}
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) .theme-toggle .sun-icon { display: none; }
+  html:not([data-theme="dark"]) .theme-toggle .moon-icon { display: block; }
+}
+
 .menu-toggle{
   display:none; appearance:none; width:38px; height:38px; border:0; background:transparent;
   padding:8px; cursor:pointer;
@@ -303,14 +381,20 @@ a:hover{ color:var(--accent-hover); }
   .nav{
     position:absolute; top:100%; left:0; right:0; display:none; flex-direction:column; align-items:stretch;
     gap:0; padding:6px 0 12px; border-bottom:1px solid var(--hdr);
-    background:rgba(250,251,248,.98); box-shadow:0 18px 36px rgba(30,34,29,.10);
+    background:var(--bg); box-shadow:0 18px 36px rgba(15,18,15,.25);
   }
   .topbar.nav-open .nav{ display:flex; }
-  .nav a,.nav .search{
+  .nav a,.nav .theme-toggle,.nav .search{
     width:100%; min-height:44px; justify-content:flex-start; padding:0 2px;
     border-top:1px solid var(--rule); color:var(--ink2);
   }
   .nav a.active{ color:var(--accent); }
+  .nav .theme-toggle {
+    border: 0;
+    border-radius: 0;
+    justify-content: flex-start;
+    padding-left: 8px;
+  }
   .nav .search .icon{ margin-left:0; }
   .article-title{ font-size:26px; }
   /* archives: stack the month label above the titles; titles stay one line */

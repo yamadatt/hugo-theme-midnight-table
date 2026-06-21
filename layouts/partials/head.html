@@ -2,6 +2,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}｜{{ .Site.Title }}{{ end }}</title>
 {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+{{ if ne .Site.Params.themeToggle false }}
+<script>
+  (function() {
+    const storageKey = 'theme-preference';
+    const currentTheme = localStorage.getItem(storageKey);
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (currentTheme === 'dark' || (!currentTheme && systemDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+{{ end }}
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,3 +24,6 @@
 <script src="{{ "js/search.js" | relURL }}" defer></script>
 <script src="{{ "js/header-autohide.js" | relURL }}" defer></script>
 <script src="{{ "js/toc.js" | relURL }}" defer></script>
+{{ if ne .Site.Params.themeToggle false }}
+<script src="{{ "js/theme-toggle.js" | relURL }}" defer></script>
+{{ end }}
