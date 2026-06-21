@@ -19,6 +19,9 @@
   --hdr:#e6e8e1;          /* ヘッダー下線 */
   --tag:#9aa096;          /* タグ文字（小さく薄く） */
   --tag-border:#e3e6dd;
+  --code-bg:#1e221d;      /* コードブロック背景 */
+  --code-text:#ded8cf;    /* コードブロック文字色 */
+  --inline-code-bg:#f1ede4; /* インラインコード背景 */
   --serif:'BIZ UDPGothic', sans-serif;
   --sans:'BIZ UDPGothic', sans-serif;
 }
@@ -40,6 +43,9 @@ html[data-theme="dark"] {
   --hdr:#252a22;
   --tag:#8b9086;
   --tag-border:#2a3027;
+  --code-bg:#151814;
+  --code-text:#c6ccc0;
+  --inline-code-bg:#20251d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,6 +66,9 @@ html[data-theme="dark"] {
     --hdr:#252a22;
     --tag:#8b9086;
     --tag-border:#2a3027;
+    --code-bg:#151814;
+    --code-text:#c6ccc0;
+    --inline-code-bg:#20251d;
   }
 }
 
@@ -304,12 +313,13 @@ html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
 .prose img{ display:block; max-width:100%; height:auto; margin:28px auto; }
 .prose pre{
   font-family:'SFMono-Regular',Menlo,Consolas,monospace; font-size:13px; line-height:1.85;
-  background:var(--ink) !important; color:#ded8cf; padding:22px 24px; border-radius:8px; margin:28px 0;
+  background:var(--code-bg) !important; color:var(--code-text); padding:22px 24px; border-radius:8px; margin:28px 0;
   overflow-x:auto; white-space:pre; letter-spacing:0;
 }
 .prose :not(pre) > code{
   font-family:'SFMono-Regular',Menlo,Consolas,monospace; font-size:.85em;
-  background:#f1ede4; padding:2px 6px; border-radius:4px;
+  background:var(--inline-code-bg); padding:2px 6px; border-radius:4px;
+  color:var(--ink);
 }
 .prose table{
   display:block; width:100%; max-width:100%; overflow-x:auto; border-collapse:collapse;
