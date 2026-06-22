@@ -611,3 +611,48 @@ html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
     font-weight: 700;
   }
 }
+
+/* ===== Overrides for Sticky Archives and Dark Mode Contrast ===== */
+
+/* Sticky year headers in archives */
+.year-head {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 86px;
+  z-index: 9;
+  background-color: var(--bg);
+  margin: 0;
+  padding: 16px 0 8px;
+}
+@media (max-width: 640px) {
+  .year-head {
+    top: 56px;
+    padding: 12px 0 6px;
+  }
+  .topbar.is-hidden ~ .year-head {
+    top: 0;
+  }
+}
+
+/* Tag cloud colors for light and dark modes */
+.tagcloud a.tag-medium {
+  color: #2b2723;
+}
+.tagcloud a.tag-heavy {
+  color: #b5462f;
+}
+html[data-theme="dark"] .tagcloud a.tag-medium {
+  color: #dae0d4;
+}
+html[data-theme="dark"] .tagcloud a.tag-heavy {
+  color: #e67a63;
+}
+
+/* Dark mode contrast improvements */
+html[data-theme="dark"] {
+  --faint: #636b5d;
+  --accent: #72ba8b;
+  --accent-hover: #90d3a7;
+  --rule: #363c32;
+  --code-bg: #1a1e19;
+}

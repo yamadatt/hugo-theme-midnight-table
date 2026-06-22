@@ -2,10 +2,12 @@
 <div class="wrap">
   {{ partial "header.html" . }}
 
+  {{ $pageSize := .Site.Params.archivePagerSize | default 20 }}
   {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ $paginator := .Paginate $posts $pageSize }}
   <div class="section-label">{{ .Title }}</div>
 
-  {{ range $posts.GroupByDate "2006" }}
+  {{ range $paginator.Pages.GroupByDate "2006" }}
     <div class="year-head"><span class="y">{{ .Key }}</span><span class="c">{{ len .Pages }}</span></div>
     {{ range .Pages.GroupByDate "1" }}
       <div class="month-row">
@@ -21,6 +23,8 @@
       </div>
     {{ end }}
   {{ end }}
+
+  {{ partial "pager.html" . }}
 
   {{ partial "footer.html" . }}
 </div>
